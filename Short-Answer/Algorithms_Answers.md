@@ -5,17 +5,21 @@
 a)O(n)
 
 
-b)O(nlogn) - but maybe O(n^2)
+b)O(nlogn)
+
+ - but maybe O(n^2)
 
 
 c)O(n)
 
 ## Exercise II
 def throwEggs(building,f):
-  floor = 0
+  floorWhereEggBreaks = 0
   for i in building:
     if i == f:
-      floor = i
+      floorWhereEggBreaks = i
     else:
       "egg didn't break"
-  return floor
+  return floorWhereEggBreaks
+
+  O(n)

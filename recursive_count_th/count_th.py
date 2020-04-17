@@ -9,13 +9,13 @@ Your function must utilize recursion. It cannot contain any loops.
 #     if not word:
 #         return word
 #     else:
-#         ass = count_th(word[1:])
-#         if ass == None:
-#             ass = word
-#         if ass != None:
-#             print(ass)
+#         thing = count_th(word[1:])
+#         if thing == None:
+#             thing = word
+#         if thing != None:
+#             print(thing)
 
-#             return ass.count("th")
+#             return thing.count("th")
 
 
 def count_th(word):
@@ -34,5 +34,4 @@ def count_th(word):
     return count
 
 
-# print(count_th("fifth"))
-
+print(count_th("fifth"))
