@@ -2,14 +2,20 @@
 
 ## Exercise I
 
-a)
+a)O(n)
 
 
-b)
+b)O(nlogn) - but maybe O(n^2)
 
 
-c)
+c)O(n)
 
 ## Exercise II
-
-
+def throwEggs(building,f):
+  floor = 0
+  for i in building:
+    if i == f:
+      floor = i
+    else:
+      "egg didn't break"
+  return floor
