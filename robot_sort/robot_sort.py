@@ -16,13 +16,6 @@ class SortingRobot:
         """
         return self._position < len(self._list) - 1
 
-    def can_move_right2(self):
-        """
-        Returns True if the robot can move right or False if it's
-        at the end of the list.
-        """
-        return self._position < len(self._list)
-
     def can_move_left(self):
         """
         Returns True if the robot can move left or False if it's
@@ -101,29 +94,36 @@ class SortingRobot:
         """
         return self._light == "ON"
 
-    def value(self):
-        return self._list[self._position]
-
-    def item(self):
-        return self._item
-
     def sort(self):
         """
+        planning-phase: "Robot Sort rules violations will not be held against students in this row."
+        plan: return self._list.sort().
+        harder-plan:
+        iterate through list 
+            if robot can move right
+                move right
+
+
+
         Sort the robot's list.
+
         """
         # Fill this out
-        print("first", self._position, self._item)
-        while self.light_is_on() == False:
-            # print("val", self.value())
-            if self.item() == None:
+        while self.can_move_right() and self.light_is_on() == False:
+            if self.compare_item() == None:
                 self.swap_item()
-            elif self.can_move_right():
-                if self.compare_item() == -1:
+            if self.compare_item() == -1:
+                self.swap_item()
+            self.move_right()
+            if self.can_move_right() == False:
+                if self.compare_item() == 1:
                     self.swap_item()
-                self.move_right()
-            else:
-                self.set_light_on()
-        print("second", self._position, self._item)
+                elif self.compare_item() == None:
+                    self.set_light_on()
+                while self.can_move_left():
+                    self.move_left()
+                    if self.compare_item() == 1:
+                        self.swap_item()
 
 
 if __name__ == "__main__":
@@ -133,7 +133,7 @@ if __name__ == "__main__":
     l = [15, 41, 58, 49, 26, 4, 28, 8, 61, 60, 65, 21, 78, 14, 35, 90, 54, 5, 0, 87, 82, 96, 43, 92, 62, 97, 69, 94, 99, 93, 76, 47, 2, 88, 51, 40, 95, 6, 23, 81, 30, 19, 25, 91, 18, 68, 71, 9, 66, 1,
          45, 33, 3, 72, 16, 85, 27, 59, 64, 39, 32, 24, 38, 84, 44, 80, 11, 73, 42, 20, 10, 29, 22, 98, 17, 48, 52, 67, 53, 74, 77, 37, 63, 31, 7, 75, 36, 89, 70, 34, 79, 83, 13, 57, 86, 12, 56, 50, 55, 46]
 
-    k = [12, 4, 17, 1, 23, 0]
-    robot = SortingRobot(k)
+    robot = SortingRobot(l)
 
     robot.sort()
+    print(robot._list)

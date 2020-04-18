@@ -5,19 +5,6 @@ Your function must utilize recursion. It cannot contain any loops.
 '''
 
 
-# def count_th(word):
-#     if not word:
-#         return word
-#     else:
-#         thing = count_th(word[1:])
-#         if thing == None:
-#             thing = word
-#         if thing != None:
-#             print(thing)
-
-#             return thing.count("th")
-
-
 def count_th(word):
     i = 0
     count = 0
